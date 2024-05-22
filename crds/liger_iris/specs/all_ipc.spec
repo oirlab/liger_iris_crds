@@ -1,5 +1,5 @@
 {
-    'observatory' : 'TMT',
+    'observatory' : 'LIGERIRI',
     'instrument' : 'ALL',
     'filekind' : 'IPC',
     'filetype' : 'IPC',

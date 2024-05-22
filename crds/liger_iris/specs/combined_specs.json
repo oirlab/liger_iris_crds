@@ -18,7 +18,7 @@
             "filetype":"DARK",
             "instrument":"ALL",
             "ld_tpn":"all_dark_ld.tpn",
-            "observatory":"TMT",
+            "observatory":"LIGERIRI",
             "suffix":"DARK",
             "text_descr":"Dark files for all instruments.",
             "tpn":"all_dark.tpn",
