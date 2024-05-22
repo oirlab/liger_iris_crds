@@ -1,0 +1,21 @@
+header = {
+    'classes' : ('VersionAfter',),
+    'derived_from' : 'Hand made 2016-09-09',
+    'file_ext' : '.json',
+    'filekind' : 'DATALVL',
+    'filetype' : 'DATALVL',
+    'instrument' : 'SYSTEM',
+    'mapping' : 'REFERENCE',
+    'name' : 'tmt_system_datalvl_0000.rmap',
+    'observatory' : 'TMT',
+    'parkey' : (('META.CALIBRATION_SOFTWARE_VERSION',),),
+    'reference_to_dataset' : {
+        'CAL_VER' : 'META.CALIBRATION_SOFTWARE_VERSION',
+    },
+    'sha1sum' : '9d4bea5fdce22bbd8e48afbdc07cb19e128b6549',
+    'suffix' : 'datalvl',
+    'text_descr' : 'Reference Type to Processing Data Level',
+}
+
+selector = VersionAfter({
+})

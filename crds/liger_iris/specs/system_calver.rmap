@@ -1,0 +1,18 @@
+header = {
+    'classes' : ('Match', 'UseAfter'),
+    'derived_from' : 'Hand made 2016-08-25',
+    'file_ext' : '.json',
+    'filekind' : 'CALVER',
+    'filetype' : 'CALVER',
+    'instrument' : 'SYSTEM',
+    'mapping' : 'REFERENCE',
+    'name' : 'tmt_system_calver_0000.rmap',
+    'observatory' : 'TMT',
+    'parkey' : (('CAL_VER',), ('META.OBSERVATION.DATE', 'META.OBSERVATION.TIME')),
+    'sha1sum' : 'f5a69f446a13ee8c62857c5a9785f64f3b6ac74e',
+    'suffix' : 'calver',
+    'text_descr' : 'Calibration Software Component Versions',
+}
+
+selector = Match({
+})

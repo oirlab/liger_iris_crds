@@ -1,0 +1,21 @@
+header = {
+    'classes' : ('VersionAfter',),
+    'derived_from' : 'handmade spec 07-20-2017',
+    'file_ext' : '.yaml',
+    'filekind' : 'crdscfg',
+    'filetype' : 'CRDSCFG',
+    'instrument' : 'SYSTEM',
+    'mapping' : 'REFERENCE',
+    'name' : 'system_crdscfg.rmap',
+    'observatory' : 'TMT',
+    'parkey' : (('META.CALIBRATION_SOFTWARE_VERSION',),),
+    'reference_to_dataset' : {
+        'CAL_VER' : 'META.CALIBRATION_SOFTWARE_VERSION',
+    },
+    'sha1sum' : '6e4c7e72998af32d342d96bf21b51d1db63f93e7',
+    'suffix' : 'crdscfg',
+    'text_descr' : 'Parameters for CRDS',
+}
+
+selector = VersionAfter({
+})
