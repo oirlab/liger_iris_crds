@@ -7,7 +7,7 @@
 #
 # NAME  KEYTYPE  DATATYPE   PRESENCE    VALUES
 #----------------------------------------------------------
-META.TELESCOPE          H   C   R               TMT
+META.TELESCOPE          H   C   R               LIGERIRI
 # META.INSTRUMENT.NAME    H   C   R               FGS,NIRCAM,NIRISS,NIRSPEC,MIRI,SYSTEM
 META.REFTYPE       H   C   R
 META.USEAFTER   H   C   R               &JWSTDATE
