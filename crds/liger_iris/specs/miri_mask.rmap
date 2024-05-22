@@ -1,0 +1,23 @@
+header = {
+    'classes' : ('Match', 'UseAfter'),
+    'derived_from' : 'jwst_miri_mask_new.rmap',
+    'file_ext' : '.fits',
+    'filekind' : 'MASK',
+    'filetype' : 'MASK',
+    'instrument' : 'MIRI',
+    'mapping' : 'REFERENCE',
+    'name' : 'miri_mask.rmap',
+    'observatory' : 'JWST',
+    'parkey' : (('META.INSTRUMENT.DETECTOR', 'META.SUBARRAY.NAME', 'META.EXPOSURE.READPATT', 'META.EXPOSURE.NGROUPS'), ('META.OBSERVATION.DATE', 'META.OBSERVATION.TIME')),
+    'sha1sum' : '1366d1d6206db422c4acf9f82090165d172c42ed',
+    'substitutions' : {
+        'META.SUBARRAY.NAME' : {
+            'GENERIC' : 'N/A',
+        },
+    },
+    'suffix' : 'mask',
+    'text_descr' : 'Bad Pixel Mask',
+}
+
+selector = Match({
+})

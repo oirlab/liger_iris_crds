@@ -1,0 +1,17 @@
+header = {
+    'derived_from' : 'nirspec_drizpars.spec',
+    'file_ext' : '.fits',
+    'filekind' : 'DRIZPARS',
+    'filetype' : 'DRIZPARS',
+    'instrument' : 'NIRSPEC',
+    'mapping' : 'REFERENCE',
+    'name' : 'jwst_nirspec_drizpars_0000.rmap',
+    'observatory' : 'JWST',
+    'parkey' : ((), ('META.OBSERVATION.DATE', 'META.OBSERVATION.TIME')),
+    'sha1sum' : '2a4e3b479f7e01b9d527deb2989c0a9e875b165f',
+    'suffix' : 'drizpars',
+    'text_descr' : 'Drizzle Parameters used in Image Distortion Correction and Combination',
+}
+
+selector = Match({
+})
