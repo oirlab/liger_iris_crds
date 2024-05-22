@@ -25,11 +25,8 @@ from crds.core.generic_tpn import TpnInfo
 # ====================================================================================
 
 INSTR_PREFIX = {
-    "fgs" : "FGS_",
-    "miri" : "MIR_",
-    "nircam" : "NRC_",
-    "niriss" : "NIS_",
-    "nirspec" : "NRS_",
+    "iris" : "IRI_",
+    "liger" : "LIG_",
     }
 
 def get_exptypes(instrument=None):
@@ -106,7 +103,7 @@ def _load_schema(schema_name=None):
     """Return the core data model schema."""
     from . import locate
     datamodels = locate.get_datamodels()
-    model = datamodels.JwstDataModel(schema=schema_name)
+    model = datamodels.DataModel(schema=schema_name)
     return model.schema
 
 def _schema_to_flat(schema):
