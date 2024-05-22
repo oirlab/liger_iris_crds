@@ -1,5 +1,0 @@
-replace XDIM_MAX 1024
-replace SCI_TYPE 'FLOAT'
-
-include miri_sci_array_both.tpn
-
