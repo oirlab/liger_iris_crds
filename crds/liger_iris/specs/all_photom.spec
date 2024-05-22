@@ -1,5 +1,5 @@
 {
-    'observatory' : 'JWST',
+    'observatory' : 'TMT',
     'instrument' : 'ALL',
     'filekind' : 'PHOTOM',
     'filetype' : 'PHOTOM',

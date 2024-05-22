@@ -7,12 +7,12 @@ header = {
     'instrument' : 'SYSTEM',
     'mapping' : 'REFERENCE',
     'name' : 'system_crdscfg.rmap',
-    'observatory' : 'JWST',
+    'observatory' : 'TMT',
     'parkey' : (('META.CALIBRATION_SOFTWARE_VERSION',),),
     'reference_to_dataset' : {
         'CAL_VER' : 'META.CALIBRATION_SOFTWARE_VERSION',
     },
-    'sha1sum' : 'e0129b8c5618431b521b25256dd59bb0d3409067',
+    'sha1sum' : '6e4c7e72998af32d342d96bf21b51d1db63f93e7',
     'suffix' : 'crdscfg',
     'text_descr' : 'Parameters for CRDS',
 }
