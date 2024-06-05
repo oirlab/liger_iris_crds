@@ -5,7 +5,7 @@ from crds.core import reftypes
 HERE  = os.path.abspath(os.path.dirname(__file__) or ".")
 
 
-TYPES = reftypes.from_package_file("liger_iris", __file__)
+TYPES = reftypes.from_package_file("ligeriri", __file__)
 
 OBSERVATORY = TYPES.observatory
 INSTRUMENTS = TYPES.instruments

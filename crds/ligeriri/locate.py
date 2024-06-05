@@ -25,7 +25,7 @@ from crds.io import abstract
 # These two functions decouple the generic reference file certifier program
 # from observatory-unique ways of specifying and caching Validator parameters.
 
-from crds.jwst import TYPES, INSTRUMENTS, FILEKINDS, EXTENSIONS, INSTRUMENT_FIXERS, TYPE_FIXERS
+from crds.ligeriri import TYPES, INSTRUMENTS, FILEKINDS, EXTENSIONS, INSTRUMENT_FIXERS, TYPE_FIXERS
 
 from . import schema
 
@@ -38,7 +38,7 @@ suffix_to_filekind = TYPES.suffix_to_filekind
 filekind_to_suffix = TYPES.filekind_to_suffix
 get_all_tpninfos = TYPES.get_all_tpninfos
 
-from crds.jwst.pipeline import header_to_reftypes, header_to_pipelines
+from crds.ligeriri.pipeline import header_to_reftypes, header_to_pipelines
 
 # =======================================================================
 
@@ -46,10 +46,10 @@ MODEL = None
 
 def get_datamodels():
     try:
-        from jwst import datamodels  # this is fatal.
+        from liger_iris_pipeline import datamodels  # this is fatal.
     except ImportError:
         log.error(
-            "CRDS requires installation of the 'jwst' package to operate on JWST files.")
+            "CRDS requires installation of the 'liger_iris_pipeline' package to operate on JWST files.")
         raise
     global MODEL
     if MODEL is None:
@@ -78,10 +78,10 @@ def project_check(refpath, rmap):
         get_data_model_flat_dict(refpath)
 
 def get_data_model_flat_dict(filepath):
-    """Get the header from `filepath` using the jwst data model."""
+    """Get the header from `filepath` using the liger_iris data model."""
     datamodels = get_datamodels()
     log.info("Checking JWST datamodels.")
-    # with log.error_on_exception("JWST Data Model (jwst.datamodels)"):
+    # with log.error_on_exception("JWST Data Model (liger_iris.datamodels)"):
     try:
         with datamodels.open(filepath) as d_model:
             flat_dict = d_model.to_flat_dict(include_arrays=False)
@@ -251,8 +251,8 @@ def ref_properties_from_header(filename):
     # For legacy files,  just use the root filename as the unique id
     path, parts, ext = _get_fields(filename)
     serial = os.path.basename(os.path.splitext(filename)[0])
-    header = data_file.get_free_header(filename, (), None, "jwst")
-    header["TELESCOP"] = header["TELESCOPE"] = header["META.TELESCOPE"] = "jwst"
+    header = data_file.get_free_header(filename, (), None, "ligeriri")
+    header["TELESCOP"] = header["TELESCOPE"] = header["META.TELESCOPE"] = "ligeriri"
     name = os.path.basename(filename)
     try:
         instrument = utils.header_to_instrument(header).lower()
@@ -265,7 +265,7 @@ def ref_properties_from_header(filename):
         assert filekind in FILEKINDS, "Invalid file type " + repr(filekind)
     except Exception as exc:
         raise exceptions.CrdsNamingError("Can't identify REFTYPE of", repr(name))
-    return path, "jwst", instrument, filekind, serial, ext
+    return path, "ligeriri", instrument, filekind, serial, ext
 
 # =============================================================================
 
@@ -337,7 +337,7 @@ def reference_keys_to_dataset_keys(rmapping, header):
             log.info("Pattern-like keyword", repr(key),
                      "may be misspelled or missing its translation in CRDS.  Pattern will not be used.")
             log.info("The translation for", repr(key),
-                     "can be defined in crds.jwst.locate or rmap header reference_to_dataset field.")
+                     "can be defined in crds.ligeriri.locate or rmap header reference_to_dataset field.")
             log.info("If this is not a pattern keyword, adding a translation to 'not-a-pattern'",
                      "will suppress this warning.")
 
@@ -462,12 +462,12 @@ def locate_file(refname, mode=None):
     specific sub-directory for it based on the filename alone,  not the file contents.
     """
     if mode is  None:
-        mode = config.get_crds_ref_subdir_mode(observatory="jwst")
+        mode = config.get_crds_ref_subdir_mode(observatory="ligeriri")
     if mode == "instrument":
         instrument = utils.file_to_instrument(refname)
         rootdir = locate_dir(instrument, mode)
     elif mode == "flat":
-        rootdir = config.get_crds_refpath("jwst")
+        rootdir = config.get_crds_refpath("ligeriri")
     else:
         raise ValueError("Unhandled reference file location mode " + repr(mode))
     return  os.path.join(rootdir, os.path.basename(refname))
@@ -475,10 +475,10 @@ def locate_file(refname, mode=None):
 def locate_dir(instrument, mode=None):
     """Locate the instrument specific directory for a reference file."""
     if mode is  None:
-        mode = config.get_crds_ref_subdir_mode(observatory="jwst")
+        mode = config.get_crds_ref_subdir_mode(observatory="ligeriri")
     else:
         config.check_crds_ref_subdir_mode(mode)
-    crds_refpath = config.get_crds_refpath("jwst")
+    crds_refpath = config.get_crds_refpath("ligeriri")
     if mode == "instrument":   # use simple names inside CRDS cache.
         rootdir = os.path.join(crds_refpath, instrument.lower())
         if not os.path.exists(rootdir):
