@@ -1,5 +1,5 @@
 # List of all the observatory package names
-ALL_OBSERVATORIES = ["hst", "jwst", "roman", "tobs", "liger_iris"]
+ALL_OBSERVATORIES = ["hst", "jwst", "roman", "tobs", "ligeriri"]
 
 # keywords used to identify instrument from headers
 INSTRUMENT_KEYWORDS = ["INSTRUME", "META.INSTRUMENT.NAME",
