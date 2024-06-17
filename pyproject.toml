@@ -1,5 +1,6 @@
 [project]
 name = "crds"
+version = "12.0.0"
 description = "Calibration Reference Data System,  HST/JWST/Roman reference file management"
 authors = [{ name = "STScI CRDS s/w developers" }]
 classifiers = [
@@ -12,13 +13,12 @@ classifiers = [
 ]
 dependencies = [
   "astropy",
-  "numpy",
+  "numpy<2",
   "filelock",
   "asdf != 3.0.0",
   "requests",
   "parsley",
 ]
-dynamic = ["version"]
 
 [project.readme]
 file = "README.rst"
@@ -190,6 +190,3 @@ markers = [
   "uniqname",
   "uses",
 ]
-
-[tool.setuptools_scm]
-write_to = "crds/_version.py"
