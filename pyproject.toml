@@ -82,6 +82,7 @@ packages = [
   "crds.jwst",
   "crds.tobs",
   "crds.roman",
+  "crds.ligeriri",
 ]
 include-package-data = false
 
@@ -101,6 +102,7 @@ crds = "crds"
 "crds.jwst" = "crds/jwst"
 "crds.roman" = "crds/roman"
 "crds.tobs" = "crds/tobs"
+"crds.ligeriri" = "crds/ligeriri"
 
 
 [tool.setuptools.package-data]
@@ -135,6 +137,16 @@ crds = "crds"
   "specs/*.json",
 ]
 "crds.tobs" = [
+  "*.dat",
+  "*.yaml",
+  "*.json",
+  "tpns/*.tpn",
+  "tpns/includes/*.tpn",
+  "specs/*.spec",
+  "specs/*.rmap",
+  "specs/*.json",
+]
+"crds.ligeriri" = [
   "*.dat",
   "*.yaml",
   "*.json",
