@@ -27,7 +27,7 @@ from crds.core.generic_tpn import TpnInfo
 INSTR_PREFIX = {
     "iris" : "IRI_",
     "liger" : "LIG_",
-    }
+}
 
 def get_exptypes(instrument=None):
     """Using an arbitrary reference from an instrument that matches using EXP_TYPE,  return

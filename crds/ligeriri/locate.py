@@ -1,5 +1,5 @@
 """This module provides functions which determine various observatory
-specific policies for JWST:
+specific policies for LigerIRIS reference files.:
 
 1. How to convert reference file basenames to fully specified paths.
 
@@ -42,20 +42,23 @@ from crds.ligeriri.pipeline import header_to_reftypes, header_to_pipelines
 
 # =======================================================================
 
+
+# TODO: Figure out mechanism for how stpipe/crds sets the MODEL variable.
+# TODO: Rework this so MODEL is never None.
+# TODO: Unclear overall why stpipe/crds uses a global variable for this.
 MODEL = None
 
 def get_datamodels():
     try:
-        from liger_iris_pipeline import datamodels  # this is fatal.
+        from liger_iris_pipeline import datamodels
     except ImportError:
         log.error(
-            "CRDS requires installation of the 'liger_iris_pipeline' package to operate on JWST files.")
+            "CRDS requires installation of the 'liger_iris_pipeline' package to operate on LigerIRIS files.")
         raise
     global MODEL
     if MODEL is None:
-        with log.error_on_exception(
-                "Failed constructing basic JWST DataModel"):
-            MODEL = datamodels.LigerIrisDataModel()
+        with log.error_on_exception("Failed constructing basic LigerIRIS DataModel"):
+            MODEL = datamodels.LigerIRISDataModel()
     return datamodels
 
 # =============================================================================
@@ -80,19 +83,18 @@ def project_check(refpath, rmap):
 def get_data_model_flat_dict(filepath):
     """Get the header from `filepath` using the liger_iris data model."""
     datamodels = get_datamodels()
-    log.info("Checking JWST datamodels.")
-    # with log.error_on_exception("JWST Data Model (liger_iris.datamodels)"):
+    log.info("Checking liger_iris_pipeline datamodels.")
     try:
         with datamodels.open(filepath) as d_model:
             flat_dict = d_model.to_flat_dict(include_arrays=False)
     except Exception as exc:
-        raise exceptions.ValidationError("JWST Data Models:", str(exc).replace("u'","'")) from exc
+        raise exceptions.ValidationError("liger_iris_pipeline Data Models:", str(exc).replace("u'","'")) from exc
     return flat_dict
 
 # =======================================================================
 
 def match_context_key(key):
-    """Set the case of a context key appropriately for this project, JWST
+    """Set the case of a context key appropriately for this project, LigerIRIS
     always uses upper case.
     """
     return key.upper()
@@ -401,7 +403,7 @@ def condition_matching_header(rmapping, header):
 # ============================================================================
 
 def fits_to_parkeys(fits_header):
-    """Map a FITS header onto rmap parkeys appropriate for JWST."""
+    """Map a FITS header onto rmap parkeys appropriate for Liger/IRIS."""
     parkeys = {}
     for key, value in fits_header.items():
         key, value = str(key), str(value)
@@ -410,7 +412,7 @@ def fits_to_parkeys(fits_header):
             if not pk:
                 pk = key
             else:
-                assert len(pk) == 1, "CRDS JWST Data Model ambiguity on " + \
+                assert len(pk) == 1, "CRDS liger_iris_pipeline Data Model ambiguity on " + \
                     repr(key) + " = " + repr(pk)
                 pk = pk[0]
         else:
@@ -421,7 +423,7 @@ def fits_to_parkeys(fits_header):
 
 @utils.cached
 def cached_dm_find_fits_keyword(key):
-    """Return the SSB JWST data model path for the specified non-path keyword,  nominally
+    """Return the SSB LigerIRIS data model path for the specified non-path keyword,  nominally
     a FITS or json or ASDF bare keyword.
     """
     get_datamodels()
@@ -454,7 +456,7 @@ def filekind_to_keyword(filekind):
 
 @utils.cached
 def warn_filekind_once(filekind):
-    log.warning("No apparent JWST cal code data models schema support for", log.srepr(filekind))
+    log.warning("No apparent liger_iris_pipeline cal code data models schema support for", log.srepr(filekind))
 
 def locate_file(refname, mode=None):
     """Given a valid reffilename in CDBS or CRDS format,  return a cache path for the file.
@@ -555,7 +557,7 @@ def get_cross_strapped_pairs(header):
 def _get_fits_datamodel_pairs(header):
     """Return the (FITS, DM) and (DM, FITS) cross strap pairs associated with
     every keyword in `header` as defined by the datamodels interface functions
-    defined by the CRDS JWST schema module.
+    defined by the CRDS Liger IRIS schema module.
     """
     pairs = []
     from . import schema

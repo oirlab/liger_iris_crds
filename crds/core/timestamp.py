@@ -29,6 +29,7 @@ def format_date(date, sep=" "):
     return date.isoformat(sep)
 
 T_SEPARATED_DATE_RE = re.compile(r"^\d\d\d\d[-/]\d\d[-/]\d\dT\d\d(:\d\d){1,2}(\.\d{1,6})?$")
+#T_SEPARATED_DATE_RE =re.compile(r"^\d\d\d\d[-/]\d\d[-/]\d\dT\d\d(:\d\d){1,2}(\.\d{1,16})?([A-Z]{1,2})?$")
 ALPHABETICAL_RE = re.compile(r"[A-Za-z]{3,10}")
 ASTROPY_TIME_FORMAT = "%Y-%m-%d %H:%M:%S"
 
@@ -259,7 +260,6 @@ def parse_numerical_date(dstr):
         time = " ".join(parts[1:])
 
     ihour, iminute, isecond, imicrosecond = parse_time(time)
-
     if MONTH_DAY_YEAR_RE.match(date):
         month, day, year = date.split("/")
     elif YEAR_MONTH_DAY_RE.match(date):

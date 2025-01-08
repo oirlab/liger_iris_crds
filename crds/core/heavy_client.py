@@ -178,7 +178,6 @@ def _initial_recommendations(
         name, parameters, reftypes=None, context=None, ignore_cache=False, observatory="jwst", fast=False):
 
     """shared logic for getreferences() and getrecommendations()."""
-
     if not fast:
         log.verbose("="*120)
         log.verbose(name + "() CRDS version: ", version_info())
@@ -194,7 +193,6 @@ def _initial_recommendations(
         #        log.verbose(var, "=", repr(os.environ[var]))
         log.verbose("CRDS_PATH =", os.environ.get("CRDS_PATH", "UNDEFINED"))
         log.verbose("CRDS_SERVER_URL =", os.environ.get("CRDS_SERVER_URL", "UNDEFINED"))
-
         check_observatory(observatory)
         parameters = check_parameters(parameters)
         check_reftypes(reftypes)
@@ -209,7 +207,6 @@ def _initial_recommendations(
     mode, final_context = get_processing_mode(observatory, context)
 
     log.verbose("Final effective context is", repr(final_context))
-
     if mode == "local":
         log.verbose("Computing best references locally.")
         bestrefs = local_bestrefs(
